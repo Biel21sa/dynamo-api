@@ -1,20 +1,19 @@
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
-  DynamoDBDocumentClient,
   PutCommand,
   GetCommand,
+  ScanCommand,
   UpdateCommand,
   DeleteCommand,
   QueryCommand,
 } from "@aws-sdk/lib-dynamodb";
-import { EstablishmentRules } from "../models/establishmentRules.model";
+import { Product } from "../models/product.model";
 import { dynamoClient } from "../utils/dynamoClient";
 
-const TABLE_NAME = "EstablishmentRules";
+const TABLE_NAME = "Products";
 
-export const create = async (rule: EstablishmentRules) => {
+export const create = async (product: Product) => {
   await dynamoClient.send(
-    new PutCommand({ TableName: TABLE_NAME, Item: rule })
+    new PutCommand({ TableName: TABLE_NAME, Item: product })
   );
 };
 
@@ -22,7 +21,14 @@ export const findById = async (id: string) => {
   const result = await dynamoClient.send(
     new GetCommand({ TableName: TABLE_NAME, Key: { id } })
   );
-  return result.Item as EstablishmentRules;
+  return result.Item as Product;
+};
+
+export const findAll = async () => {
+  const result = await dynamoClient.send(
+    new ScanCommand({ TableName: TABLE_NAME })
+  );
+  return result.Items as Product[];
 };
 
 export const findByEstablishmentId = async (establishmentId: string) => {
@@ -36,13 +42,10 @@ export const findByEstablishmentId = async (establishmentId: string) => {
       },
     })
   );
-  return result.Items?.[0] as EstablishmentRules;
+  return result.Items as Product[];
 };
 
-export const update = async (
-  id: string,
-  updates: Partial<EstablishmentRules>
-) => {
+export const update = async (id: string, updates: Partial<Product>) => {
   const updateExpressions = [];
   const ExpressionAttributeValues: Record<string, any> = {};
   const ExpressionAttributeNames: Record<string, string> = {};
