@@ -37,7 +37,7 @@ async function createEstablishmentsTable() {
     });
 
     await dynamoClient.send(command);
-    console.log("Tabela 'Establishments' criada com sucesso.");
+    console.log("Tabela criada com sucesso.");
   } catch (err) {
     console.error("Erro ao criar tabela:", err);
   }
