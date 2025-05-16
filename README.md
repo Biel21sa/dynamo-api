@@ -14,6 +14,7 @@ Este projeto é uma API para gerenciamento de usuários, estabelecimentos e prod
 - [🧪 Testes](#-testes)
 - [▶️ Como Executar](#️-como-executar)
 - [📁 Estrutura de Diretórios](#-estrutura-de-diretórios)
+- [📬 Contato](#-contato)
 
 ---
 
@@ -186,3 +187,5 @@ Em caso de dúvidas ou sugestões, sinta-se à vontade para abrir uma issue ou e
 
 GitHub: Biel21sa
 Email: gabriel21silvaalves@gmail.com
+
+---
