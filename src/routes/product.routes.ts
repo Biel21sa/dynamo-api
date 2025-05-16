@@ -5,12 +5,16 @@ const router = express.Router();
 
 router.post("/", controller.createProduct);
 router.get("/", controller.listAllProducts);
-router.get("/:id", controller.getProductById);
 router.get(
   "/establishment/:establishmentId",
   controller.getProductsByEstablishmentId
 );
-router.put("/:id", controller.updateProduct);
+router.get("/:id", (req, res, next) => {
+  controller.getProductById(req, res).catch(next);
+});
+router.put("/:id", (req, res, next) => {
+  controller.updateProduct(req, res).catch(next);
+});
 router.delete("/:id", controller.deleteProduct);
 
 export default router;

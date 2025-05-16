@@ -133,22 +133,34 @@ npm run test
 npm install
 ```
 
-2. Criar as tabelas no banco:
-
-```bash
-npm run create-table
-```
-
-3. Configure as variáveis de ambiente:
+2. Configure as variáveis de ambiente:
 
 ```bash
 cp .env.example .env
 ```
 
-4. Inicie a aplicação:
+3. Suba o container Docker:
+
+```bash
+docker-compose up
+```
+
+4. Inicie o build:
+
+```bash
+npm run build
+```
+
+5. Inicie a aplicação:
 
 ```bash
 npm run start
+```
+
+6. Criar as tabelas no banco:
+
+```bash
+npm run create-table
 ```
 
 ---

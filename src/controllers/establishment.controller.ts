@@ -1,4 +1,4 @@
-import { Request, RequestHandler, Response } from "express";
+import { Request, Response } from "express";
 import * as service from "../services/establishment.service";
 
 export const create = async (req: Request, res: Response) => {
