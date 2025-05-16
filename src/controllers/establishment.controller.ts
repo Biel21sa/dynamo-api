@@ -1,9 +1,15 @@
 import { Request, Response } from "express";
+import { v4 as uuidv4 } from "uuid";
 import * as service from "../services/establishment.service";
 
 export const create = async (req: Request, res: Response) => {
   try {
-    const result = await service.createEstablishment(req.body);
+    const establishment = {
+      id: uuidv4(),
+      ...req.body,
+    };
+
+    const result = await service.createEstablishment(establishment);
     res.status(201).json(result);
   } catch (err: any) {
     res.status(400).json({ error: err.message });

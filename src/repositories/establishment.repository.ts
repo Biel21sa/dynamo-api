@@ -27,9 +27,12 @@ export const updateEstablishment = async (
 ) => {
   const updateExpressions = [];
   const expressionAttributeValues: any = {};
+  const expressionAttributeNames: any = {};
+
   for (const key in updates) {
-    updateExpressions.push(`${key} = :${key}`);
+    updateExpressions.push(`#${key} = :${key}`);
     expressionAttributeValues[`:${key}`] = (updates as any)[key];
+    expressionAttributeNames[`#${key}`] = key;
   }
 
   const UpdateExpression = "SET " + updateExpressions.join(", ");
@@ -40,6 +43,7 @@ export const updateEstablishment = async (
       Key: { id },
       UpdateExpression,
       ExpressionAttributeValues: expressionAttributeValues,
+      ExpressionAttributeNames: expressionAttributeNames,
     })
   );
 };
