@@ -177,3 +177,12 @@ src/
 ├── 📂 utils/           # Funções auxiliares
 tests/                  # Testes unitários
 ```
+
+---
+
+## 📬 Contato
+
+Em caso de dúvidas ou sugestões, sinta-se à vontade para abrir uma issue ou entrar em contato comigo diretamente.
+
+GitHub: Biel21sa
+Email: gabriel21silvaalves@gmail.com
